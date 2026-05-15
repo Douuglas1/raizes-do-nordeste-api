@@ -1,11 +1,9 @@
 package com.raizesnordeste.api.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "pagamentos")
 public class Pagamento {
@@ -43,4 +41,22 @@ public class Pagamento {
     public enum FormaPagamento {
         MOCK, PIX, CARTAO_CREDITO, CARTAO_DEBITO
     }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public Pedido getPedido() { return pedido; }
+    public void setPedido(Pedido pedido) { this.pedido = pedido; }
+
+    public BigDecimal getValor() { return valor; }
+    public void setValor(BigDecimal valor) { this.valor = valor; }
+
+    public StatusPagamento getStatus() { return status; }
+    public void setStatus(StatusPagamento status) { this.status = status; }
+
+    public FormaPagamento getFormaPagamento() { return formaPagamento; }
+    public void setFormaPagamento(FormaPagamento formaPagamento) { this.formaPagamento = formaPagamento; }
+
+    public LocalDateTime getDataPagamento() { return dataPagamento; }
+    public void setDataPagamento(LocalDateTime dataPagamento) { this.dataPagamento = dataPagamento; }
 }

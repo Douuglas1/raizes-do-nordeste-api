@@ -1,10 +1,8 @@
 package com.raizesnordeste.api.domain;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import java.time.LocalDateTime;
 
-@Data
 @Entity
 @Table(name = "usuarios")
 public class Usuario {
@@ -42,4 +40,28 @@ public class Usuario {
     public enum PerfilUsuario {
         CLIENTE, ATENDENTE, COZINHA, GERENTE, ADMIN
     }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
+
+    public PerfilUsuario getPerfil() { return perfil; }
+    public void setPerfil(PerfilUsuario perfil) { this.perfil = perfil; }
+
+    public Boolean getAtivo() { return ativo; }
+    public void setAtivo(Boolean ativo) { this.ativo = ativo; }
+
+    public Boolean getConsentimentoLgpd() { return consentimentoLgpd; }
+    public void setConsentimentoLgpd(Boolean consentimentoLgpd) { this.consentimentoLgpd = consentimentoLgpd; }
+
+    public LocalDateTime getDataCadastro() { return dataCadastro; }
+    public void setDataCadastro(LocalDateTime dataCadastro) { this.dataCadastro = dataCadastro; }
 }
