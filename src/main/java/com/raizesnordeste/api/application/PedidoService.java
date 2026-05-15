@@ -75,4 +75,8 @@ public class PedidoService {
     public List<Pedido> listarPorClienteId(Long clienteId) {
         return pedidoRepository.findByClienteId(clienteId);
     }
+    
+    public List<Pedido> listarPorCanalEStatus(Pedido.CanalPedido canal, Pedido.StatusPedido status) {
+        return pedidoRepository.findByCanalPedidoAndStatus(canal, status);
+    }
 }
