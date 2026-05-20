@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "pedidos")
 public class Pedido {
@@ -21,6 +23,7 @@ public class Pedido {
     @JoinColumn(name = "unidade_id", nullable = false)
     private Unidade unidade;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
 
