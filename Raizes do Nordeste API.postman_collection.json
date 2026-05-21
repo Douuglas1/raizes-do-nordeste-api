@@ -1,0 +1,956 @@
+{
+  "info": {
+    "_postman_id": "3add459f-4d21-4c63-b05c-a9a705dae2fa",
+    "name": "Raizes do Nordeste API",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54976782",
+    "_collection_link": "https://go.postman.co/collection/54976782-3add459f-4d21-4c63-b05c-a9a705dae2fa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Pedidos",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Cadastro de Usuario",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Cliente Teste\",\r\n    \"email\": \"cliente2@email.com\",\r\n    \"senha\": \"Senha@123\",\r\n    \"perfil\": \"CLIENTE\",\r\n    \"consentimentoLgpd\": true\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/auth/cadastro",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "auth",
+                    "cadastro"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Cadastro de Usuario",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"nome\": \"Douglas Venz\",\r\n    \"email\": \"douglas@email.com\",\r\n    \"senha\": \"Senha@123\",\r\n    \"perfil\": \"ADMIN\",\r\n    \"consentimentoLgpd\": true\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/auth/cadastro",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "auth",
+                        "cadastro"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 19 May 2026 01:08:56 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"nome\": \"Douglas Venz\",\n    \"id\": 1,\n    \"email\": \"douglas@email.com\",\n    \"perfil\": \"ADMIN\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Login",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"douglas@email.com\",\r\n    \"senha\": \"Senha@123\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/auth/login",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Login",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"email\": \"douglas@email.com\",\r\n    \"senha\": \"Senha@123\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "http://localhost:8080/auth/login",
+                      "protocol": "http",
+                      "host": [
+                        "localhost"
+                      ],
+                      "port": "8080",
+                      "path": [
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "X-Content-Type-Options",
+                      "value": "nosniff"
+                    },
+                    {
+                      "key": "X-XSS-Protection",
+                      "value": "0"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, no-store, max-age=0, must-revalidate"
+                    },
+                    {
+                      "key": "Pragma",
+                      "value": "no-cache"
+                    },
+                    {
+                      "key": "Expires",
+                      "value": "0"
+                    },
+                    {
+                      "key": "X-Frame-Options",
+                      "value": "DENY"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Tue, 19 May 2026 01:10:01 GMT"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=60"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "keep-alive"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"expiresIn\": 86400,\n    \"usuario\": {\n        \"nome\": \"Douglas Venz\",\n        \"perfil\": \"ADMIN\",\n        \"id\": 1\n    },\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTE1MzAwMSwiZXhwIjoxNzc5MjM5NDAxfQ.1uInG_Nex1bcKA1YHWbsvpoTo5WGVHiAhCqCH672zj8\",\n    \"tokenType\": \"Bearer\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Acesso sem token (401)",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/pedidos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "pedidos"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Criar Pedido",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"cliente\": {\r\n        \"id\": 1\r\n    },\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    },\r\n    \"canalPedido\": \"APP\",\r\n    \"itens\": [\r\n        {\r\n            \"produto\": {\r\n                \"id\": 1\r\n            },\r\n            \"quantidade\": 2\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pedido com Estoque Insuficiente (409)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"cliente\": {\r\n        \"id\": 1\r\n    },\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    },\r\n    \"canalPedido\": \"APP\",\r\n    \"itens\": [\r\n        {\r\n            \"produto\": {\r\n                \"id\": 1\r\n            },\r\n            \"quantidade\": 9999\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Pedido com Produto Inexistente (404)",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"cliente\": {\r\n        \"id\": 1\r\n    },\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    },\r\n    \"canalPedido\": \"APP\",\r\n    \"itens\": [\r\n        {\r\n            \"produto\": {\r\n                \"id\": 9999\r\n            },\r\n            \"quantidade\": 1\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Pedidos por Canal",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/pedidos?canalPedido=APP",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos"
+              ],
+              "query": [
+                {
+                  "key": "canalPedido",
+                  "value": "APP"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Estoque",
+      "item": [
+        {
+          "name": "Adicionar Estoque",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"produto\": {\r\n        \"id\": 1\r\n    },\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    },\r\n    \"quantidade\": 50\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/estoque",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "estoque"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Adicionar Estoque",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"produto\": {\r\n        \"id\": 1\r\n    },\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    },\r\n    \"quantidade\": 50\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/estoque",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "estoque"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 20 May 2026 00:24:05 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"produto\": {\n        \"id\": 1,\n        \"nome\": null,\n        \"descricao\": null,\n        \"preco\": null,\n        \"categoria\": null,\n        \"disponivel\": true,\n        \"unidade\": null\n    },\n    \"unidade\": {\n        \"id\": 1,\n        \"nome\": null,\n        \"endereco\": null,\n        \"cidade\": null,\n        \"telefone\": null,\n        \"ativa\": true\n    },\n    \"quantidade\": 50\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pagamentos",
+      "item": [
+        {
+          "name": "Processar Pagamento Mock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"formaPagamento\": \"MOCK\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pagamentos/processar/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pagamentos",
+                "processar",
+                "3"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Processar Pagamento Mock",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"formaPagamento\": \"MOCK\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/pagamentos/processar/2",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "pagamentos",
+                    "processar",
+                    "2"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 20 May 2026 00:54:20 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"pagamentoId\": 1,\n    \"formaPagamento\": \"MOCK\",\n    \"valor\": 51.8,\n    \"statusPedido\": \"EM_PREPARO\",\n    \"status\": \"APROVADO\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fidelidade",
+      "item": [
+        {
+          "name": "Consultar Saldo",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/fidelidade/saldo/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fidelidade",
+                "saldo",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Adicionar Pontos",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clienteId\": 1,\r\n    \"pontos\": 100,\r\n    \"descricao\": \"Pontos por pedido realizado\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fidelidade/adicionar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fidelidade",
+                "adicionar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resgatar Pontos",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"clienteId\": 1,\r\n    \"pontos\": 50,\r\n    \"descricao\": \"Resgate de pontos\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/fidelidade/resgatar",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "fidelidade",
+                "resgatar"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Produtos",
+      "item": [
+        {
+          "name": "Criar Produto",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"X-Nordestino\",\r\n    \"descricao\": \"Hamburguer com carne de sol, queijo coalho e vinagrete\",\r\n    \"preco\": 25.90,\r\n    \"categoria\": \"Lanches\",\r\n    \"disponivel\": true,\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/produtos",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "produtos"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Criar Produto",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"X-Nordestino\",\r\n    \"descricao\": \"Hamburguer com carne de sol, queijo coalho e vinagrete\",\r\n    \"preco\": 25.90,\r\n    \"categoria\": \"Lanches\",\r\n    \"disponivel\": true,\r\n    \"unidade\": {\r\n        \"id\": 1\r\n    }\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/produtos",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "produtos"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 19 May 2026 01:19:11 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": 1,\n    \"nome\": \"X-Nordestino\",\n    \"descricao\": \"Hamburguer com carne de sol, queijo coalho e vinagrete\",\n    \"preco\": 25.9,\n    \"categoria\": \"Lanches\",\n    \"disponivel\": true,\n    \"unidade\": {\n        \"id\": 1,\n        \"nome\": null,\n        \"endereco\": null,\n        \"cidade\": null,\n        \"telefone\": null,\n        \"ativa\": true\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Post data",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "postman-echo.com/post",
+          "host": [
+            "postman-echo",
+            "com"
+          ],
+          "path": [
+            "post"
+          ]
+        },
+        "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+      },
+      "response": []
+    }
+  ]
+}
