@@ -2,6 +2,7 @@ package com.raizesnordeste.api.controller;
 
 import com.raizesnordeste.api.domain.Produto;
 import com.raizesnordeste.api.infrastructure.ProdutoRepository;
+import com.raizesnordeste.api.infrastructure.UnidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,9 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+
+    @Autowired
+    private UnidadeRepository unidadeRepository;
 
     @GetMapping
     public ResponseEntity<List<Produto>> listar() {
@@ -36,8 +40,14 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<?> criar(@RequestBody Produto produto) {
         try {
+            if (produto.getUnidade() != null && produto.getUnidade().getId() != null) {
+                produto.setUnidade(unidadeRepository.findById(produto.getUnidade().getId())
+                    .orElseThrow(() -> new RuntimeException("Unidade nao encontrada!")));
+            }
             Produto novo = produtoRepository.save(produto);
-            return ResponseEntity.status(201).body(novo);
+            return ResponseEntity.status(201).body(
+                produtoRepository.findById(novo.getId()).orElse(novo)
+            );
         } catch (RuntimeException e) {
             Map<String, Object> erro = new HashMap<>();
             erro.put("error", "ERRO_AO_CRIAR_PRODUTO");

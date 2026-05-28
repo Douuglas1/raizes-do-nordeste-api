@@ -18,6 +18,10 @@ public class PagamentoService {
     private PedidoService pedidoService;
 
     public Pagamento processarPagamentoMock(Pedido pedido, Pagamento.FormaPagamento formaPagamento) {
+        if (pagamentoRepository.findByPedidoId(pedido.getId()).isPresent()) {
+            throw new RuntimeException("Pagamento ja existe para este pedido!");
+        }
+
         Pagamento pagamento = new Pagamento();
         pagamento.setPedido(pedido);
         pagamento.setValor(pedido.getTotal());

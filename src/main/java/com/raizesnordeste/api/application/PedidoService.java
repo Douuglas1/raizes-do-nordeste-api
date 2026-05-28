@@ -8,6 +8,8 @@ import com.raizesnordeste.api.domain.Produto;
 import com.raizesnordeste.api.infrastructure.EstoqueRepository;
 import com.raizesnordeste.api.infrastructure.PedidoRepository;
 import com.raizesnordeste.api.infrastructure.ProdutoRepository;
+import com.raizesnordeste.api.infrastructure.UsuarioRepository;
+import com.raizesnordeste.api.infrastructure.UnidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
@@ -26,12 +28,25 @@ public class PedidoService {
     @Autowired
     private EstoqueRepository estoqueRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private UnidadeRepository unidadeRepository;
+
     public Pedido criarPedido(Pedido pedido) {
+        pedido.setCliente(usuarioRepository.findById(pedido.getCliente().getId())
+            .orElseThrow(() -> new RuntimeException("Cliente nao encontrado!")));
+        pedido.setUnidade(unidadeRepository.findById(pedido.getUnidade().getId())
+            .orElseThrow(() -> new RuntimeException("Unidade nao encontrada!")));
+
         BigDecimal total = BigDecimal.ZERO;
 
         for (ItemPedido item : pedido.getItens()) {
             Produto produto = produtoRepository.findById(item.getProduto().getId())
                     .orElseThrow(() -> new RuntimeException("Produto nao encontrado!"));
+
+            item.setProduto(produto); // <- add aqui
 
             Estoque estoque = estoqueRepository
                     .findByProdutoIdAndUnidadeId(produto.getId(), pedido.getUnidade().getId())
@@ -50,14 +65,16 @@ public class PedidoService {
         }
 
         pedido.setTotal(total);
-        return pedidoRepository.save(pedido);
+        Pedido salvo = pedidoRepository.save(pedido);
+        return pedidoRepository.findById(salvo.getId()).orElse(salvo);
     }
 
     public Pedido atualizarStatus(Long pedidoId, StatusPedido novoStatus) {
         Pedido pedido = pedidoRepository.findById(pedidoId)
                 .orElseThrow(() -> new RuntimeException("Pedido nao encontrado!"));
         pedido.setStatus(novoStatus);
-        return pedidoRepository.save(pedido);
+        Pedido salvo = pedidoRepository.save(pedido);
+        return pedidoRepository.findById(salvo.getId()).orElse(salvo);
     }
 
     public Optional<Pedido> buscarPorId(Long id) {
@@ -75,7 +92,7 @@ public class PedidoService {
     public List<Pedido> listarPorClienteId(Long clienteId) {
         return pedidoRepository.findByClienteId(clienteId);
     }
-    
+
     public List<Pedido> listarPorCanalEStatus(Pedido.CanalPedido canal, Pedido.StatusPedido status) {
         return pedidoRepository.findByCanalPedidoAndStatus(canal, status);
     }
