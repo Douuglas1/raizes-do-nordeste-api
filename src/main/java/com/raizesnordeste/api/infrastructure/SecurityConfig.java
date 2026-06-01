@@ -3,6 +3,7 @@ package com.raizesnordeste.api.infrastructure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +29,23 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/unidades/**").hasAnyAuthority("ADMIN", "GERENTE")
+                .requestMatchers(HttpMethod.POST, "/produtos/**").hasAnyAuthority("ADMIN", "GERENTE")
+                .requestMatchers(HttpMethod.POST, "/estoque/**").hasAnyAuthority("ADMIN", "GERENTE")
+                .requestMatchers(HttpMethod.PATCH, "/pedidos/**").hasAnyAuthority("ADMIN", "GERENTE", "COZINHA", "ATENDENTE")
                 .anyRequest().authenticated()
+            )
+            .exceptionHandling(ex -> ex
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setStatus(401);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"NAO_AUTENTICADO\",\"message\":\"Token ausente ou invalido.\"}");
+                })
+                .accessDeniedHandler((request, response, accessDeniedException) -> {
+                    response.setStatus(403);
+                    response.setContentType("application/json");
+                    response.getWriter().write("{\"error\":\"SEM_PERMISSAO\",\"message\":\"Voce nao tem permissao para acessar este recurso.\"}");
+                })
             )
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
 
