@@ -1,35 +1,34 @@
 # Raízes do Nordeste - API Back-end
-
 API REST desenvolvida em Java com Spring Boot para a rede de lanchonetes "Raízes do Nordeste".
 
 ## Tecnologias Utilizadas
-
 - Java 25
-- Spring Boot 3.5.14
+- Spring Boot 3.5
 - Spring Security + JWT
 - Spring Data JPA + Hibernate
 - MySQL 8.0
-- Maven
+- Maven 3.9
 - Swagger/OpenAPI (SpringDoc)
 
 ## Requisitos
-
 - Java 25+
 - Maven 3.9+
 - MySQL 8.0+
 
-## Configuração do Ambiente
+## Variáveis de Ambiente
+Copie o arquivo `src/main/resources/application.properties.example` para `src/main/resources/application.properties` e preencha com suas credenciais:
+- `spring.datasource.username` — usuário do MySQL
+- `spring.datasource.password` — senha do MySQL
 
+## Configuração do Ambiente
 1. Clone o repositório:
 ```bash
 git clone https://github.com/Douuglas1/raizes-do-nordeste-api.git
 ```
-
 2. Crie o banco de dados no MySQL:
 ```sql
 CREATE DATABASE raizes_do_nordeste;
 ```
-
 3. Configure as variáveis de ambiente criando o arquivo `src/main/resources/application.properties`:
 ```properties
 spring.application.name=api
@@ -44,46 +43,43 @@ server.port=8080
 ```
 
 ## Como Rodar o Projeto
-
 1. Instale as dependências:
 ```bash
 mvn install
 ```
-
 2. Inicie a aplicação:
 ```bash
 mvn spring-boot:run
 ```
 
 ## Documentação da API (Swagger)
-
 Após iniciar a aplicação, acesse:
-
 http://localhost:8080/swagger-ui/index.html
 
 ## Testes com Postman
-
 Importe o arquivo `Raizes do Nordeste API.postman_collection.json` no Postman.
 
 ### Ordem sugerida para os testes:
 1. Auth/Cadastro de Usuario
 2. Auth/Login (copie o token)
-3. Produtos/Criar Unidade
+3. Unidades/Criar Unidade
 4. Produtos/Criar Produto
 5. Estoque/Adicionar Estoque
 6. Pedidos/Criar Pedido
 7. Pagamentos/Processar Pagamento Mock
+8. Pedidos/Listar Pedidos por Canal
+9. Fidelidade/Adicionar Pontos
+10. Fidelidade/Consultar Saldo
 
 ## Fluxo Principal
-
 Cadastro → Login → Criar Unidade → Criar Produto →
 Adicionar Estoque → Criar Pedido → Processar Pagamento Mock →
 Status do Pedido Atualizado
 
 ## Segurança e LGPD
-
 - Senhas armazenadas com hash BCrypt
 - Autenticação via JWT (Bearer Token)
+- Autorização por perfis (ADMIN, GERENTE, CLIENTE, COZINHA, ATENDENTE)
 - Senha não exposta nos responses
 - Consentimento LGPD registrado no cadastro
 - Dados pessoais protegidos
