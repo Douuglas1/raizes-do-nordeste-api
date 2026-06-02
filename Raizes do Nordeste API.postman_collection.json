@@ -423,6 +423,14 @@
             }
           },
           "response": []
+        },
+        {
+          "name": "Campo obrigatório ausente",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
         }
       ]
     },
@@ -437,7 +445,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMDI0OSwiZXhwIjoxNzgwMDk2NjQ5fQ.SLU0fZzHDmw7OSftpgyWmtA-Hef9Y9i8-WLpRK7XE6w",
                   "type": "string"
                 }
               ]
@@ -799,7 +807,7 @@
               "bearer": [
                 {
                   "key": "token",
-                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc3OTQwMTczNSwiZXhwIjoxNzc5NDg4MTM1fQ.o1OoT8QxcVtyxtmeoiaLCR6eQG5kP7nQANBfFzdyX5g",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMjMxNSwiZXhwIjoxNzgwMDk4NzE1fQ.v2zvcV4gG2oIvFeGYHf2OsBPZTBjdtIukn7GHY5KNIY",
                   "type": "string"
                 }
               ]
@@ -911,27 +919,154 @@
       ]
     },
     {
-      "name": "Post data",
+      "name": "Unidades",
+      "item": [
+        {
+          "name": "Listar Cardápio por Unidade",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMDI0OSwiZXhwIjoxNzgwMDk2NjQ5fQ.SLU0fZzHDmw7OSftpgyWmtA-Hef9Y9i8-WLpRK7XE6w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/produtos/unidade/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "produtos",
+                "unidade",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consultar Estoque",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMDI0OSwiZXhwIjoxNzgwMDk2NjQ5fQ.SLU0fZzHDmw7OSftpgyWmtA-Hef9Y9i8-WLpRK7XE6w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/estoque/1/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "estoque",
+                "1",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Atualizar Status do Pedido",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMDI0OSwiZXhwIjoxNzgwMDk2NjQ5fQ.SLU0fZzHDmw7OSftpgyWmtA-Hef9Y9i8-WLpRK7XE6w",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"PRONTO\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/pedidos/1/status",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "pedidos",
+                "1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Acesso sem permissao (403)",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Criar unidade",
       "event": [
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Successful POST request\", function () {",
               "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
               "});",
               ""
-            ]
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
           }
         }
       ],
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkb3VnbGFzQGVtYWlsLmNvbSIsImlhdCI6MTc4MDAxMDI0OSwiZXhwIjoxNzgwMDk2NjQ5fQ.SLU0fZzHDmw7OSftpgyWmtA-Hef9Y9i8-WLpRK7XE6w",
+              "type": "string"
+            }
+          ]
+        },
         "method": "POST",
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n\t\"name\": \"Add your name in the body\"\n}",
+          "raw": "{\n  \"nome\": \"Raízes do Nordeste - Unidade Centro\",\n  \"endereco\": \"Rua das Flores, 123\",\n  \"cidade\": \"Fortaleza\",\n  \"telefone\": \"(85) 99999-9999\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -939,13 +1074,14 @@
           }
         },
         "url": {
-          "raw": "postman-echo.com/post",
+          "raw": "http://localhost:8080/unidades",
+          "protocol": "http",
           "host": [
-            "postman-echo",
-            "com"
+            "localhost"
           ],
+          "port": "8080",
           "path": [
-            "post"
+            "unidades"
           ]
         },
         "description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
